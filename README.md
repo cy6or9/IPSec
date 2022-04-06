@@ -1,19 +1,20 @@
 # IPSec
-  IP Security tools. Simple gtk VPN menu. Free VPN, or connect to AnonSurf and monitor the Status live.
+  IP Security tools. Simple gtk VPN menu. Free VPN, equipped with MACChanger and Anonsurf for instant TOR networking. (cannot be ran parallel)
   Numerous VPN connections available currently provided by vpnbook. Completely hidden connections for surfing or downloading private files.
   Speeds my vary due to traffic and distance.  No logs kept. 
 
-  MacChanger also included to improve the anonymity.
+  Stable connections with reliable anonymity. constantly tested and improved.
  
 # Requirements:
 - OpenVPN
 - zenity
 - xterm
-- wget
+- wget  "OpenVPN" functions will not work without. (VPN) 
 
 # optional: 
-- MACChanger
-- AnonSurf
+- MACChanger    "MACChanger" functions will not work without.
+- AnonSurf    "AnonSurf" functions will not work without.
+- nyx   "Status" button will not work without
 
 # Tested on:
 - ParrotOS
