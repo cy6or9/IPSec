@@ -1,0 +1,44 @@
+#!/bin/bash
+#width-height
+# ip-master - ip controller
+
+# Define GPIO pins if used
+
+ip=1 
+# OK button return code =0 , all others =1
+while [ $ip -eq 1 ]; do
+  ans=$(zenity --info --title 'IPSec' \
+	--text="IP currently.."$(wget -qO- ipinfo.io/ip) \
+	--ok-label Back \
+	--extra-button POLAND \
+	--extra-button US2 \
+	--extra-button STOP \
+       )
+  ip=$?
+  echo "${ip}-${ans}"
+  echo $ans
+  if [[ $ans = "POLAND" ]]
+  then
+	clear
+	echo "Connecting to POLAND"
+	echo "username - vpnbook"
+	echo "last known password - 9ntas3c"
+	echo "HOLD Ctrl + c or closing xterm window (sudo) will disconnect VPN and restore you original IP settings"
+	xterm -e sudo openvpn --config /home/cy6or9/Programs/Cy6or9-tools/IPSec/OVPNs/VPNBook.com-OpenVPN-PL226/vpnbook-pl226-udp53.ovpn
+	wget -qO- ipinfo.io/ip;
+  elif [[ $ans = "US2" ]]
+  then
+	clear
+	echo "Connecting to US2"
+	echo "username - vpnbook"
+	echo "last known password - 9ntas3c"
+	echo "HOLD Ctrl + c or closing xterm window (sudo) will disconnect VPN and restore you original IP settings"
+	xterm -e sudo openvpn --config /home/cy6or9/Programs/Cy6or9-tools/IPSec/OVPNs/VPNBook.com-OpenVPN-US2/vpnbook-us2-udp53.ovpn
+	wget -qO- ipinfo.io/ip;
+  elif [[ $ans = "STOP" ]]
+  then
+        echo "DEACTIVATING VPN"
+        sudo service openvpn stop
+	wget -qO- ipinfo.io/ip;
+  fi
+done

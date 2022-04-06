@@ -1,0 +1,43 @@
+#!/bin/bash
+#width-height
+# AnonSurf - 
+
+# Define GPIO pins if used
+
+ip=1 
+# OK button return code =0 , all others =1
+while [ $ip -eq 1 ]; do
+  ans=$(zenity --info --title 'AnonSurf' \
+	--text="IP currently:"$(wget -qO- ipinfo.io/ip) \
+	--ok-label Back \
+	--extra-button REFRESH \
+	--extra-button START \
+	--extra-button STOP \
+	--extra-button CHANGE \
+	--extra-button STATUS \
+       )
+  ip=$?
+  echo "${ip}-${ans}"
+  echo $ans
+  if [[ $ans = "REFRESH" ]]
+  then
+        echo "REFRESHING IP"
+        wget -qO- ipinfo.io/ip;
+  elif [[ $ans = "START" ]]
+  then
+        echo "Starting VPN SEARCH"
+        anonsurf start;
+  elif [[ $ans = "STOP" ]]
+  then
+        echo "DEACTIVATING VPN"
+        anonsurf stop;
+  elif [[ $ans = "CHANGE" ]]
+  then
+        echo "CHANGING IP and SWITCHING VPN SERVICES"
+        anonsurf changeid;
+  elif [[ $ans = "STATUS" ]]
+  then
+        echo "LIVE.."
+        nyx;
+  fi
+done

@@ -1,0 +1,67 @@
+#!/bin/bash
+#width-height
+# ip-master - ip controller
+
+# Define GPIO pins if used
+
+ip=1 
+# OK button return code =0 , all others =1
+while [ $ip -eq 1 ]; do
+  ans=$(zenity --info --title 'IPSec' \
+	--text="IP currently:"$(wget -qO- ipinfo.io/ip) \
+	--ok-label Quit \
+	--extra-button REFRESH \
+	--extra-button OpenVPNs \
+	--extra-button AnonSurf \
+	--extra-button MACChanger \
+	--extra-button STATUS \
+       )
+  ip=$?
+  echo "${ip}-${ans}"
+  echo $ans
+  if [[ $ans = "REFRESH" ]]
+  then
+        echo "REFRESHING IP"
+        wget -qO- ipinfo.io/ip;
+  elif [[ $ans = "OpenVPNs" ]]
+  then
+	clear
+        echo "OpenVPN starting"
+	clear
+	echo "OpenVPN starting."
+	clear
+	echo "OpenVPN starting.."
+	clear
+	echo "OpenVPN starting..."
+	zenity --width 400 --height 75 --info --title 'IPSec' --text="Browser Opening - Navigate to openvpn tab and scroll to bottom and note the login username and password. Username and Password will be needed to use VPN Servers. Once noted, close browser to load Available VPNs and enter login credentials. 										
+IP currently:"$(wget -qO- ipinfo.io/ip) --ok-label Next
+	firefox --new-window https://www.vpnbook.com/#openvpn
+        ./IPSecOVPNs;
+  elif [[ $ans = "AnonSurf" ]]
+  then
+	clear
+        echo "AnonSurf starting"
+	clear
+	echo "AnonSurf starting."
+	clear
+	echo "AnonSurf starting.."
+	clear
+	echo "AnonSurf starting..."
+       ./IPSecAS;
+  elif [[ $ans = "MACChanger" ]]
+  then
+	clear
+        echo "MACChanger starting"
+	clear
+	echo "MACChanger starting."
+	clear
+	echo "MACChanger starting.."
+	clear
+	echo "MACChanger starting..."
+	.*/IPSecC;
+  elif [[ $ans = "STATUS" ]]
+  then
+        echo "LIVE.."
+        nyx;
+  fi
+done
