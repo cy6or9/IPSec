@@ -1,8 +1,15 @@
 # IPSec
 IP Security tools. Simple gtk VPN menu.
-# Requirements
+# Requirements:
 - OpenVPN
 - zenity
-# *Optional 
+# optional: 
 - MACChanger
 - AnonSurf
+
+# Tested on:
+- ParrotOS
+- Kali
+#
+#
+#
