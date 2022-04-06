@@ -22,7 +22,7 @@ IP Security tools. Simple gtk VPN menu.
   
   sudo chmod +x IPSecOVPNs
   
-  Run in terminal
+ - Run in terminal
   
   ./IPSec
   
