@@ -9,6 +9,8 @@
 - OpenVPN
 - zenity
 - xterm
+- wget
+
 # optional: 
 - MACChanger
 - AnonSurf
