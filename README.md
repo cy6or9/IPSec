@@ -3,6 +3,6 @@ IP Security tools. Simple gtk VPN menu.
 # Requirements
 - OpenVPN
 - zenity
-optional
+ Optional
 - MACChanger
 - AnonSurf
