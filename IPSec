@@ -1,6 +1,6 @@
 #!/bin/bash
 #width-height
-# ip-master - ip controller
+# IPSec - IP Security
 
 # Define GPIO pins if used
 
