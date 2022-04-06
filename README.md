@@ -15,7 +15,7 @@
 
 # Tested on:
 - ParrotOS
-- Kali
+- Kali-Linux
 
 # *Instructions 
   cd into IPSec directory 
@@ -32,7 +32,7 @@
   
   ./IPSec
   
-  Follow gtk prompt
+  Follow gtk prompt & enjoy :p
 #
 #
 #
