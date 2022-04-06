@@ -16,6 +16,7 @@
 # Tested on:
 - ParrotOS
 - Kali-Linux
+- Raspbian
 
 # *Instructions 
   cd into IPSec directory 
