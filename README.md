@@ -28,7 +28,7 @@
   
   sudo chmod +x IPSecOVPNs
   
- - Run in terminal
+ - Always run in terminal from the /IPSec parent directory.
   
   ./IPSec
   
