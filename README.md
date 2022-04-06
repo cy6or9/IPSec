@@ -13,12 +13,17 @@ IP Security tools. Simple gtk VPN menu.
 
 # *Instructions 
   cd into IPSec directory 
+  
   sudo chmod +x IPSec
+  
   sudo chmod +x IPSecAS
+  
   sudo chmod +x IPSecC
+  
   sudo chmod +x IPSecOVPNs
   
   Run in terminal
+  
   ./IPSec
   
   Follow gtk prompt
