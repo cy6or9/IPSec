@@ -1,0 +1,44 @@
+#!/bin/bash
+#width-height
+# MACChanger - Changes MAC Address
+
+# Define GPIO pins if used
+macs=$(ls /sys/class/net)
+ip=1 
+# OK button return code =0 , all others =1
+while [ $ip -eq 1 ]; do
+  ans=$(zenity --info --title 'MACChanger' \
+	--text="Copy your desired interface.					Interfaces:				$macs" \
+	--ok-label Back \
+	--extra-button ChangeMAC \
+	--extra-button RestoreMAC \
+       )
+  ip=$?
+  echo "${ip}-${ans}"
+  echo $ans
+  if [[ $ans = "ChangeMAC" ]]
+  then
+	echo -n -e $yellow $greenback" Which Interface... Example(s) eth0, wlan0"; tput sgr0
+	read intrf1
+	sudo ifconfig $intrf1 down
+	sudo macchanger -p $intrf1
+	sleep 2
+	sudo ifconfig $intrf1 up
+	sleep 2
+	sudo service networking restart
+	echo -e $yellow"DONE..."
+	sleep 3;
+  elif [[ $ans = "RestoreMAC" ]]
+  then
+	echo -n -e $yellow $greenback" Which Interface... Example(s) eth0, wlan0"; tput sgr0
+	read intrf1
+	sudo ifconfig $intrf1 down
+	sudo macchanger -p $intrf1
+	sleep 2
+	sudo ifconfig $intrf1 up
+	sleep 2
+	sudo service networking restart
+	echo -e $yellow"DONE..."
+	sleep 3;
+  fi
+done
