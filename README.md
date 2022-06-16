@@ -31,8 +31,9 @@ Secure reliable connections work with P2P.  Speeds my vary due to traffic and di
   
   sudo chmod +x IPSecOVPNs
   
- - Always run in terminal from the /IPSec parent directory.
+ - Always run in terminal from the /IPSec directory.
   
+  cd IPSec
   ./IPSec
   
   Follow gtk prompt & enjoy :p
