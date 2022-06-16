@@ -1,0 +1,104 @@
+#!/bin/bash
+#width-height
+# ip-master - ip controller
+
+# Define GPIO pins if used
+
+ip=1 
+# OK button return code =0 , all others =1
+while [ $ip -eq 1 ]; do
+  ans=$(zenity --info --title 'IPSec' \
+	--text="IP currently.."$(wget -qO- ipinfo.io/ip) \
+	--ok-label Back \
+	--extra-button STOP \
+	--extra-button PL \
+	--extra-button FR \
+	--extra-button FR2 \
+	--extra-button FR3 \
+	--extra-button US \
+	--extra-button US2 \
+	--extra-button CA \
+	--extra-button CA2 \
+       )
+  ip=$?
+  echo "${ip}-${ans}"
+  echo $ans
+  if [[ $ans = "STOP" ]]
+  then
+        echo "DEACTIVATING VPN"
+        sudo service openvpn stop
+	wget -qO- ipinfo.io/ip;
+  elif [[ $ans = "PL" ]]
+  then
+	clear
+	echo "Connecting to PL226"
+	echo "username - vpnbook"
+	echo "last known password - rdedm6c"
+	echo "HOLD Ctrl + c or closing xterm window (sudo) will disconnect VPN and restore you original IP settings"
+	xterm -e sudo openvpn --config */VPNBook.com-OpenVPN-PL226/vpnbook-pl226-udp53.ovpn
+	wget -qO- ipinfo.io/ip;
+  elif [[ $ans = "FR" ]]
+  then
+	clear
+	echo "Connecting to DE4"
+	echo "username - vpnbook"
+	echo "last known password - rdedm6c"
+	echo "HOLD Ctrl + c or closing xterm window (sudo) will disconnect VPN and restore you original IP settings"
+	xterm -e sudo openvpn --config */VPNBook.com-OpenVPN-DE4/vpnbook-de4-udp53.ovpn
+	wget -qO- ipinfo.io/ip;
+  elif [[ $ans = "FR2" ]]
+  then
+	clear
+	echo "Connecting to FR1"
+	echo "username - vpnbook"
+	echo "last known password - rdedm6c"
+	echo "HOLD Ctrl + c or closing xterm window (sudo) will disconnect VPN and restore you original IP settings"
+	xterm -e sudo openvpn --config */VPNBook.com-OpenVPN-FR1/vpnbook-fr1-udp53.ovpn
+	wget -qO- ipinfo.io/ip;
+  elif [[ $ans = "FR3" ]]
+  then
+	clear
+	echo "Connecting to FR8"
+	echo "username - vpnbook"
+	echo "last known password - rdedm6c"
+	echo "HOLD Ctrl + c or closing xterm window (sudo) will disconnect VPN and restore you original IP settings"
+	xterm -e sudo openvpn --config */VPNBook.com-OpenVPN-FR8/vpnbook-fr8-udp53.ovpn
+	wget -qO- ipinfo.io/ip;
+  elif [[ $ans = "US" ]]
+  then
+	clear
+	echo "Connecting to US1"
+	echo "username - vpnbook"
+	echo "last known password - rdedm6c"
+	echo "HOLD Ctrl + c or closing xterm window (sudo) will disconnect VPN and restore you original IP settings"
+	xterm -e sudo openvpn --config */VPNBook.com-OpenVPN-US1/vpnbook-us1-udp53.ovpn
+	wget -qO- ipinfo.io/ip;
+  elif [[ $ans = "US2" ]]
+  then
+	clear
+	echo "Connecting to US2"
+	echo "username - vpnbook"
+	echo "last known password - rdedm6c"
+	echo "HOLD Ctrl + c or closing xterm window (sudo) will disconnect VPN and restore you original IP settings"
+	xterm -e sudo openvpn --config */VPNBook.com-OpenVPN-US2/vpnbook-us2-udp53.ovpn
+	wget -qO- ipinfo.io/ip;
+  elif [[ $ans = "CA" ]]
+  then
+	clear
+	echo "Connecting to CA222"
+	echo "username - vpnbook"
+	echo "last known password - rdedm6c"
+	echo "HOLD Ctrl + c or closing xterm window (sudo) will disconnect VPN and restore you original IP settings"
+	xterm -e sudo openvpn --config */VPNBook.com-OpenVPN-CA222/vpnbook-ca222-udp53.ovpn
+	wget -qO- ipinfo.io/ip;
+  elif [[ $ans = "CA2" ]]
+  then
+	clear
+	echo "Connecting to CA198"
+	echo "username - vpnbook"
+	echo "last known password - rdedm6c"
+	echo "HOLD Ctrl + c or closing xterm window (sudo) will disconnect VPN and restore you original IP settings"
+	xterm -e sudo openvpn --config */VPNBook.com-OpenVPN-CA198/vpnbook-ca198-udp53.ovpn
+	wget -qO- ipinfo.io/ip;
+  fi
+done
