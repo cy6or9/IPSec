@@ -34,6 +34,7 @@ Secure reliable connections work with P2P.  Speeds my vary due to traffic and di
  - Always run in terminal from the /IPSec directory.
   
   cd IPSec
+  
   ./IPSec
   
   Follow gtk prompt & enjoy :p
